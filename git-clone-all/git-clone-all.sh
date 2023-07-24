@@ -16,7 +16,7 @@ fi
 gh auth login --with-token <<< $GITHUB_TOKEN
 
 # Get a list of all repositories for the authenticated user
-repos=$(gh repo list --json nameWithOwner -q '.[] | .nameWithOwner')
+repos=$(gh repo list --limit 1000 --json nameWithOwner -q '.[] | .nameWithOwner')
 
 # Clone all the repositories with ghq
 for repo in $repos; do
